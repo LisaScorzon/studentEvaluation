@@ -6,10 +6,16 @@ import * as bcrypt from 'bcrypt'
 
 
 @Entity()
-export default class Teachers extends BaseEntity {
+export default class Users extends BaseEntity {
 
   @PrimaryGeneratedColumn()
   id?: number
+
+  @Column('text', {nullable: false})
+  firstName: string
+
+  @Column('text', {nullable: false})
+  lastName: string
 
 
   @IsEmail()
