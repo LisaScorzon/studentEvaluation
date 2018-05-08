@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './App.css';
+import LoginPage from './components/login/LoginPage'
+import SignupPage from './components/signup/SignupPage'
+//import LogoutPage from './components/logout/LogoutPage'
+import Topbar from './components/Topbar'
+import OverviewPage from './components/OverviewPage'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 title="Student Evaluation">Student Evaluation</h1>
-        </header>
-      </div>
+      <Router>
+      <div>
+          <nav>
+            <Topbar />
+          </nav>
+
+      
+        <main style={{marginTop:75}}>
+        <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/signup" component={SignupPage} />
+            <Route exact path="/batches" component={OverviewPage} />            </main>
+         </div>
+      </Router>
     );
   }
 }
