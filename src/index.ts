@@ -9,7 +9,7 @@ import UsersController from './users/controller';
 import LoginController from './logins/controller';
 
 
-const port = process.env.PORT || 4000
+const port =  4002
 
 
 const app = createKoaServer({

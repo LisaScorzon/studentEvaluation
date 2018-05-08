@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsDateString } from 'class-validator';
 
 
 
@@ -13,12 +12,12 @@ export default class Batches extends BaseEntity {
   @Column('integer', { nullable: true})
     batchId: number
 
-  @IsDateString()
+  
   @Column( {nullable: false})
-  start_date: Date
+  start_date: string
 
-@IsDateString()
+
   @Column( {nullable: false})
-  end_date: Date
+  end_date: string
 
 }

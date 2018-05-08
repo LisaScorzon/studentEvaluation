@@ -27,11 +27,10 @@ export default class BatchesController {
 
 @Post('/batches')
 @HttpCode(201)
-async createBatch(
+async addBatch(
     @Body() batch: Batches
 ) {
-    const entity = await batch.save()
-
+    const entity  = await batch.save()
     return entity
 }
 }
