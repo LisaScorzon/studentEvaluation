@@ -36,5 +36,7 @@ export default class Students extends BaseEntity {
  @Column('text', {nullable: false})
  currentColor: string
 
+ @Column('text', {nullable: false})
+ date: string
 
 }

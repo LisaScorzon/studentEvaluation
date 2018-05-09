@@ -6,7 +6,7 @@ import Students from './students/entity';
 import Batches from './batches/entity';
 import Colors from './color/entity';
 import Users from './users/entity';
-//import Responses from './responses/entity';
+
 
 class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrategyInterface {
 

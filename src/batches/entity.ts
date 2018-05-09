@@ -10,7 +10,7 @@ export default class Batches extends BaseEntity {
   id?: number
 
   @Column('integer', { nullable: true})
-    batchId: number
+    batchNumber: number
 
   
   @Column( {nullable: false})

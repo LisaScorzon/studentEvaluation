@@ -16,11 +16,11 @@ export default class BatchesController {
 
 
   
-  @Get('/batches/:id([0-9]+)')
+  @Get('/batches/:batchNumber')
   async getBatch(
-      @Param('id') id: number,
+      @Param('batchNumber') batchNumber: number,
   ){
-      return await Batches.findOneById(id)
+      return await Batches.findOneById(batchNumber)
   }
 
 
