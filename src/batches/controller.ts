@@ -16,22 +16,21 @@ export default class BatchesController {
 
 
   
-  @Get('/batches/:id([0-9]+)')
+  @Get('/batches/:batchNumber')
   async getBatch(
-      @Param('id') id: number,
+      @Param('batchNumber') batchNumber: number,
   ){
-      return await Batches.findOneById(id)
+      return await Batches.findOneById(batchNumber)
   }
 
 
 
 @Post('/batches')
 @HttpCode(201)
-async createBatch(
+async addBatch(
     @Body() batch: Batches
 ) {
-    const entity = await batch.save()
-
+    const entity  = await batch.save()
     return entity
 }
 }
