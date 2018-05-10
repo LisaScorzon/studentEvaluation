@@ -1,42 +1,49 @@
-import { Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsString } from 'class-validator';
 
 
+//import Batches from '../batches/entity'
 
 @Entity()
 export default class Students extends BaseEntity {
 
+  
   @PrimaryGeneratedColumn()
   id?: number
 
-  @Column('integer', {default: 1, nullable: true})
-    userId: number
+  
 
   
   @Column('text', {nullable: false})
-  full_name: string
+  fullName: string
 
 
-  @Column( {nullable: false})
-  batch_number: number
+  // @ManyToOne(_ => Batches, batch => batch.batchNumber)
+  // @JoinColumn()
+  // batchNumber: Batches []
 
-  @IsString()
-  @Column('text')
+  @Column( {nullable: true})
+  batchNumber: number
+
+  @Column( {nullable: true})
+  studentNumber: number
+
+
+  @Column('text',{nullable: true})
   photo: string
 
-  @IsString()
-  @Column('text', {nullable: true})
+ 
+  @Column('text',{nullable: true})
   remarks:string
 
-  @IsString()
-  @Column('text', {nullable: true})
+ 
+  @Column('text',{nullable: true})
   question:string
 
- @Column('text', {nullable: false})
+ @Column('text',{nullable: true})
  currentColor: string
 
- @Column('text', {nullable: false})
+ @Column('text',{nullable: true})
  date: string
 
 }

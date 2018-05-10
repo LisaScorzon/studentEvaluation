@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 
-
+//import Students from '../students/entity'
 
 @Entity()
 export default class Batches extends BaseEntity {
@@ -12,6 +12,12 @@ export default class Batches extends BaseEntity {
   @Column('integer', { nullable: true})
     batchNumber: number
 
+  // @OneToMany(_ => Students, student => student.batchNumber)
+  // @JoinColumn()
+  // batchNumberId: Students [] 
+
+  // @ManyToOne(_ => Batches, batches => batches.batch_number)
+  // batch_number: Batches
   
   @Column( {nullable: false})
   start_date: string

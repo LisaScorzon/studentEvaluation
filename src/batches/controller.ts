@@ -1,4 +1,4 @@
-import {JsonController, Get, Post, Param, Body, NotFoundError, HttpCode } from 'routing-controllers'
+import {JsonController, Get, Post, Param, Body, HttpCode } from 'routing-controllers'
 import Batches from './entity'
 //import * as request from 'superagent'
 
@@ -30,6 +30,7 @@ export default class BatchesController {
 async addBatch(
     @Body() batch: Batches
 ) {
+    console.log('posting')
     const entity  = await batch.save()
     return entity
 }
