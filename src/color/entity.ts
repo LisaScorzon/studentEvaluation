@@ -17,8 +17,12 @@ export default class Colors extends BaseEntity {
     full_name: string
 
     @Column('text', {nullable: false})
-    date_color: string
+    date: string
    
+    @Column('text', {nullable: false})
+    color: string
    
-
+    @Column( {nullable: true})
+    studentNumber: number
+  
 }

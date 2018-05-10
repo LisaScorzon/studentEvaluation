@@ -13,13 +13,21 @@ export default class ColorsController {
     if (!colors) throw new NotFoundError('colors table doesn\'t exist')
     return {colors}
   }
-  // requests one student by color
+  // requests one student by color or date
   @Get('/colors/:id')
   async color(
     @Param('id') id: number
   ){
     const color = await Colors.findOneById(id)
     return { color }
+  }
+
+  @Get('/colors/:id')
+  async date(
+    @Param('id') id: number
+  ){
+    const date = await Colors.findOneById(id)
+    return { date }
   }
 
   // creates a student color post

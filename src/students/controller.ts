@@ -1,4 +1,4 @@
-import {JsonController, Get, Post, Param, Body, NotFoundError, Put, Delete } from 'routing-controllers'
+import {JsonController, Get, Post, Param, Body, NotFoundError, Put, Delete, HttpCode } from 'routing-controllers'
 import Students from './entity'
 //import * as request from 'superagent'
 
@@ -15,20 +15,26 @@ export default class StudentsController {
   }
   // requests one student
   @Get('/students/:id')
-  async student(
+    getStudent(
     @Param('id') id: number
   ){
-    const student = await Students.findOneById(id)
-    return { student }
+   // const student = await Students.findOneById(id)
+    return Students.findOneById(id)
   }
+      //, {relations: ["batches"]})
+  
 
-  // creates a student
+  //creates a student
   @Post('/students')
-  async createStudents(
-    @Body() student: Students
-  ) {
-    return student.save()
-  }
+    @HttpCode(201)
+    async createStudent(
+        @Body() student: Students
+    ) {
+        const entity = await student.save()
+
+        return entity
+    }
+
 
   @Put('/students/:id')
   // @HttpCode(200)
