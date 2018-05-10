@@ -14,16 +14,25 @@ export default class StudentsController {
     return {students}
   }
   // requests one student
-  @Get('/students/:id')
-    getStudent(
-    @Param('id') id: number
+  @Get('/students/:studentNumber')
+  @HttpCode(201)
+    async getStudent(
+    @Param('studentNumber') studentNumber:  number,
   ){
    // const student = await Students.findOneById(id)
-    return Students.findOneById(id)
+    return await Students.findOneById(studentNumber)
   }
       //, {relations: ["batches"]})
-  
 
+      @Get('/students/currentColor')
+  @HttpCode(201)
+    async getCurrentColor(
+    @Param('currentColor') currentColor:  Students,
+  ){
+    console.log('endpoint eval')
+   // const student = await Students.findOneById(id)
+    return await Students.findOneById(currentColor)
+  }
   //creates a student
   @Post('/students')
     @HttpCode(201)
