@@ -13,10 +13,23 @@ export default class StudentsController {
     if (!students) throw new NotFoundError('students table doesn\'t exist')
     return {students}
   }
+
+  @Get('/students/:batchNumber')
+  @HttpCode(201)
+  async getStudentsBatch(
+    
+    @Param('batchNumber') batchNumber:number,
+  ){
+    console.log('@getbatchstudents')
+   // const student = await Students.findOneById(id)
+    return await Students.findOneById(batchNumber)
+  }
+
   // requests one student
   @Get('/students/:studentNumber')
   @HttpCode(201)
     async getStudent(
+      
     @Param('studentNumber') studentNumber:  number,
   ){
    // const student = await Students.findOneById(id)
@@ -24,9 +37,9 @@ export default class StudentsController {
   }
       //, {relations: ["batches"]})
 
-      @Get('/students/currentColor')
+      @Get('/students/:currentColor')
   @HttpCode(201)
-    async getCurrentColor(
+    async getEvaluation(
     @Param('currentColor') currentColor:  Students,
   ){
     console.log('endpoint eval')
@@ -45,6 +58,7 @@ export default class StudentsController {
     }
 
 
+
   @Put('/students/:id')
   // @HttpCode(200)
   async editStudent(
@@ -56,6 +70,21 @@ export default class StudentsController {
 
     return Students.merge(student, update).save()
   }
+
+  @Put('/students/currentColor')
+  // @HttpCode(200)
+  async createEvaluation(
+    @Param('id') id: number,
+    @Body() update : Partial<Students>
+  ){
+    const student = await Students.findOneById(id)
+    if (!student) throw new NotFoundError('Student doesn\'t exist')
+
+    return Students.merge(student, update).save()
+  }
+
+  
+  
 
   @Delete('/students/:id')
   async deleteStudent(
